@@ -1,0 +1,21 @@
+model User {
+    id Int @id @default(autoincrement())
+    name String
+    email String
+    password String
+    role Role @default(User)
+    
+    // relationships 
+    products Product[]
+    comments Comment[]
+
+    createdAt DateTime @default(now())
+
+    @@index([name,email,role])
+    @@map("user")
+}
+
+enum Role {
+    User 
+    Admin
+}

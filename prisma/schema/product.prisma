@@ -1,0 +1,16 @@
+model Product{
+    id Int @id @default(autoincrement())
+    title String
+    descripiton String
+    price Float
+    totalSale Int
+    owner Int @unique
+    user User @relation(fields: [owner] ,references: [id])
+    totalFavourites Int
+    comments Comment[]
+
+    createdAt DateTime @default(now())
+
+    @@index([title,descripiton])
+    @@map("product")
+}
